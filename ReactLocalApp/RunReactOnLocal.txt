@@ -1,0 +1,46 @@
+﻿Reasons for this special installation
+
+
+To run an existing application
+
+
+Multi-page app
+
+
+widgets
+
+
+to render html from server langauge
+
+
+setup through NPM
+
+
+------------------
+1- go to Reat  Website : https://reactjs.org/ then  click on get start
+2- click on the left on Add React to a Website
+3- on Step 2: Add the Script Tags copy the two scripts under this setp 2  and put these scripts on index.html
+4- go to Quickly try JSX and copy cdn under this header and put this script on index.html
+5- install serve package
+npm i -g serve
+6- run serve keyword in path in cmd
+7- copy the url and put it in the browser
+8- done
+9- note that this case of using cdn it's for the case of experiment not production
+
+
+
+------------------------------The perfect installation of react
+
+1- run (npm init -y)
+2- npm will install package.json file in the folder of the project
+3- step two run npm install babel-cli@6 babel-preset-react-app@3
+4- move the main.js file into new folder src(create it)
+5- then to compile the main.js run (npx babel --watch src --out-dir . --presets react-app/prod)
+6- run serve
+7- now delete the babel cdn and type from script
+8- if you found this error (the Uncaught Error: Target container is not a DOM element.)
+just ensure that the html code before the cdns of the react urls
+
+
+

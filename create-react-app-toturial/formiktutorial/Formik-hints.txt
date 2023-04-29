@@ -1,0 +1,169 @@
+﻿1- first install formik
+   go to the path of the project of react then run
+
+   npm i formik or yarn add formik Or  npm install formik --save
+
+2- add <Formik 
+        initialValues={{name: ""}}
+        onSubmit={this.onSubmit}
+       />
+
+   initialValues : it's have objects for default values
+   onSubmit : to run the function when form is submitting
+   render : it's for render the form and make it by run function
+   props in exectuted function used with render : these props be got  from the formik
+
+
+
+3-Error Line 11:10:  'Formik' is not defined  
+  
+  Solution:  import { Formik } from 'formik';
+
+4- <Field name="name" />
+
+   Field : imported from Formik like Formik itself
+
+5- <form onSubmit={props.handleSubmit}> 
+
+    onSubmit : used to preventReload form to handle form
+
+6- select input : 
+
+   <Field component="select" name="color">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+   </Field>  
+
+  you can use also 'as' instead of 'component'
+
+7- checkbox and radio as simple example in this small project look for the code
+
+8-  Fromik - Validation & ErrorMessage Component  : 
+    
+    install library for that
+
+    npm install yup --save
+
+Yup : 
+
+  - used to check arrays or objects or nested objects
+  - fast in executing
+  - always the user update the form yup is validating completely and fully validation
+  - used by and recommended by formik in its docs
+
+9 - used nested objects
+
+    - meaning to add object in the  initialValues section instead of single value
+    - in the name and ErrorMessage use objectName.nameOfValue
+    - in validation use like that 
+
+           social: Yup.object().shape({
+                facebook: Yup.string()
+                        .required('The facebook name is Required'),
+                twitter: Yup.string()
+                        .required('The twitter name is Required'),
+           })
+
+
+10 - array of strings in formik
+
+in the import use
+   import {FieldArray} from 'formik';
+   and in the initialValues add matrix example : 
+   friends : ["sayed", "lion"]
+   - go to form function to render
+     <FieldArray name="friends" />
+
+   - update <FieldArray name="friends" />
+   to become : 
+   <FieldArray 
+    name="friends" 
+    render={arrayHelpers => (
+              <div>
+                {
+                  props.values.friends.map((friend, index) => (
+                    <div key={index}>
+                        <Field name={`friends.${index}`} />
+                                <button 
+                                type="button"
+                                onClick={()=>{arrayHelpers.remove(index)}}
+                                >
+                                -
+                                </button>
+                                <button 
+                                type="button"
+                                onClick={()=>{arrayHelpers.push('')}}
+                                >
+                                +
+                                </button>
+                    </div>
+                  ))}
+              </div>
+            )}
+   />
+
+so you can use map to reach to the values of the array also use arrayHelpers to remove or push values
+
+-------Validation =>
+const schema = Yup.object().shape({
+           friends: Yup.array().of(
+                   Yup.string().required('Add valid friend name')
+                )
+        });
+
+and in the Fieldarray add
+
+      name={`friends.${index}`} in the map of array or friends[0] as you implement the form
+      
+11 - <Formik render> has been deprecated and will be removed in future versions of Formik. 
+     Please use a child callback function instead.
+     To get rid of this warning, replace <Formik render={(props) => ...} /> with <Formik>{(props) => ...}</Formik>
+
+12 - [!!!!!!!!need to apply and practice this section]child callback function instead. ???
+
+
+13 - array of objects
+      -----in the ArrayOfObjects file you can understand this section in well manner
+      - the hint here that when using push we pass default object not default string values
+      -onClick={()=>{arrayHelpers.push({phone: '', extension: ''})}}
+      - but in array of strings use push(''); just empty string
+      - in validation of array of objects like this
+
+schema  = () => {
+        const schema = Yup.object().shape({
+           phoneNubmers: Yup.array().of(
+                   Yup.object().shape({
+                       phone: Yup.number().typeError('Phone Must be number').required("The phone field is required!"),
+                       extension: Yup.number().typeError('extension Must be number').required("The extension field is required!")
+                   })
+                )
+        });
+        return schema;
+    }
+
+
+------------------------------------------
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

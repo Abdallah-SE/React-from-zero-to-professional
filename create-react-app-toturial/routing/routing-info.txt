@@ -1,0 +1,124 @@
+﻿React Router
+تستخدم من اجل انشاء برنامج من عدة صفحات
+first run in the react project directory : npm start
+
+مثلا لو جربنا
+localhost:3000/test-route
+لن يحصل اي شيء وسيعطيني نفس نتيجة 
+http://localhost:3000
+because we don't use react-router yet  ? 
+
+1- firstly install 
+   npm i react-router react-router-dom
+
+2- open the app.js
+and import the package
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+
+Then add </BrowserRouter> in the beginning of the application
+
+3- create the url or routes that will be used انشاء الروابط لكي يتم التصفع عبرها للصفحات المعينه
+
+this will not work  in react-router-dom v6 but will working in react-router-dom v5 
+Create The routes by the Link component
+<Link to="/">Home</Link> {" "}
+<Link to="/about">About</Link>
+
+ولطباعة الصفحات نقوم بعمل
+Route 
+<Route path='/' exact component={HomePageComponent}>
+<Route path='/about' component={AboutPageComponent}>
+
+exact : 
+To make the react undestand that the path value must equal to what you will write in the browser url
+اذا حذفناها سيقوم بأظهار كلا الصفحتين 
+
+{HomePageComponent}
+And
+{AboutPageComponent}
+
+I'm using react-router-dom v6 so you must update the upove react code to 
+so element will be instead component
+and Routes will be as container for all Route
+you will use component with tag < /> in v6  like element={<HomePageComponent />} instead v5 component={HomePageComponent}
+you don't need to use exact in Route Declaration
+
+<Link to="/">Home</Link> {" "}
+<Link to="/about">About</Link>            
+<Routes>
+   <Route path="/" element={<HomePageComponent />} />
+   <Route path="/about" element={<AboutPageComponent />} />
+</Routes>
+
+-------------------------
+---------------------ٌReact Router
+Here we will build multiple pages to add, display, edit and delete users
+like i did in the upove lines here i  will create link and route then create UsersCoponent
+Then import the UsersComponent
+
+to view the user single one we will add Link to UserComponent then
+To use parameter in the url we can just do like that
+<Route path="/users/:id" element={<UserComponent />} />
+this will be in the Routes
+
+error you can't write useParams in class component
+
+​ 
+من الموقع الرسمي
+react-router-dom
+v6
+عشان تحصل علي ال
+id
+هيكون عن طريق 
+function component 
+مش
+class component
+
+
+/// in the UserPage component write this code 
+import { useParams } from "react-router-dom";
+
+export default function UserComponent() {
+  // We can use the `useParams` hook here to access
+  // the dynamic pieces of the URL.
+  let { id } = useParams();
+
+  return (
+    <div>
+      <h3>ID: {id}</h3>
+    </div>
+  );
+}
+
+So we using useParams with hooks
+so to complete get and set the user
+will using hooks :
+They let you use state and other React features without writing a class.
+
+Declare state
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);//default number
+const [name, setName] = useState('');///defaulttring
+const [user, setUser] = useState({});//defaultobject
+
+seting the state
+
+<button onClick={() => setCount(count + 1)}>
+setUser( {id: 9, name: 'djjd'});
+setName( 'asd')
+
+Reading state
+  <p>You clicked {count} times</p>
+  <p>You clicked {name} times</p>
+  <p>You clicked {user} times</p>
+
+----------------------------------------------------
+045 - ReactJS بالعربية - Routing - Redirect
+
+we will need to install formik and yup
+
+A component is changing an uncontrolled input to be 
+
+
+

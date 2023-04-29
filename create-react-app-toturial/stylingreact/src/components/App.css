@@ -1,0 +1,28 @@
+.green {
+    background: lightgreen;
+    color: black;
+}
+
+.red {
+    background: red;
+    color: white;
+}
+
+.whiteText {
+    color: white;
+}
+
+.boldText {
+    font-weight: bold;
+}
+.redText {
+    color: red;
+}
+
+.italicText {
+    font: italic 30px serif;
+}
+.test1:hover {
+    color: brown;
+}
+

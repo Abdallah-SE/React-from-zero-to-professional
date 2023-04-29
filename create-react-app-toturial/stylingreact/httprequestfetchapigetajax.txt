@@ -1,0 +1,47 @@
+﻿you will find the code in stylingreact react app
+
+JSONPlaceholder is a free online REST API that you can use whenever you need some fake data. 
+
+we can use fetch but we will use and install axios here
+
+npm install axios
+
+then import it
+follow https://github.com/axios/axios to learn more
+
+
+------------------------------Hints in view user
+
+create users array in state fetech in it
+create user object in state when click button set the user
+display the user who selected
+you can organize the code by put it in small component function and when you pass props
+like that
+<ViewUser userinfo={this.state.user} />
+you can access that in the small component by pass props and use props.userinfo
+
+
+make code better getUsers can put it in component and use it by import {getUsers} look for code
+
+---------------------------------------------------Delete user
+
+create button to delete then in two step 
+
+        
+///delete the user from the server
+and inside the promise /// delete the user from the dom (state)
+
+------------------------------------- Edit user
+
+hint if you want to re-build the form when changing in the selecting process
+just enableReinitialize={true}
+
+see the CreateUserForm and FetchGetApi and see the form that doing that
+
+--------------------------------------------------------------------------- eRror
+if you use validation must use the same names as the name of values 
+------------------------------------------------------------------------------
+
+
+
+

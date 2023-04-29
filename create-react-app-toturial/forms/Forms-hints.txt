@@ -1,0 +1,19 @@
+﻿1- Controlled components it's for dealing with inputs in reactjs
+data is in the state and can use the value(data) in input by state and can change it
+
+ 
+2- in select you can active selected in option by state in componentsControlling.js the example
+3- to hundle multiple inputs of forms
+by - make one method to make the changing
+Or - by library Formik 
+     is the world's most popular open source form library for React and React Native.
+4- why formik because dealing with react forms is very hard to deal with complix forms scenario for example  nexted object for
+a lot of forms that linked to others or matrix values to handle them
+we will write long code to deal with complex forms in react so it's recommended from react to use fromik to be 
+profession when dealing with forms also you must use fromik in any react project it's recommended for real projects
+it's good with nested objects or array of objects.
+
+
+5- 
+6- 
+7- 

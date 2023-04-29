@@ -1,0 +1,20 @@
+﻿To install create-react-app
+
+1- npm i create-react-app -g
+2- run create-react-app projectname
+3- that's create projectname folder that contain the react app
+4- go to the folder projectname on the cmd
+5- run inside this path projectname  (npm start)
+6- done
+
+
+----------------------------------To Create  Component 
+
+1- by simple function that's for training in App.js create Test function then in function app put <Test />
+2- by class that's with default when you install react-create-app you will find class in old versions of react
+3- react hooks is used instead class and that give the function a lot of features
+4- create components folder inside the src folder
+ then you can move the Test function to it with component file Test.js then import it in App.js and use it
+don't forget to this line in the component file export default ComponentName (Test)
+5- the same thing as above for class (but creating class is defferent in syntax see Hello.js)
+6- delete component which are not used may be make errors

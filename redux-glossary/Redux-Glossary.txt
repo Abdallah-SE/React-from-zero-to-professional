@@ -1,0 +1,82 @@
+﻿1- First on the folder redux-glossary run
+  -> npm init 
+     This command used to create a Node. js project.
+     The npm init command will create a package JSON file where the project files will be stored. 
+     All the modules you download will be stored in the package.
+ 
+
+2- Run second comman 
+   -> npm install redux
+
+3- Create index.js file
+   -> echo > index.js
+
+4- add in the index.js file 
+   const createStore = require('redux').createStore;
+
+5- To test the app can add console.log("The index file is nice!"); 
+   (node file.js It is responsible for your application's startup, routing, and other functions.) then run
+   -> node index.js
+
+6- state : storeهي البيانات التي سيتم تخزينها في ال 
+           بشكل مبداءي اثناء تعريف الاستورstateعادة ما نقوم بأنشاء 
+           
+7- action : it's object must have an attribute called type
+   after that type we can use with it another attributes
+   action type inside the object : {type:''}
+   -> type example : const INCREMENT = 'INCREMENT';
+  
+8- action creator : we use the action to change the state can pass prameters as we want as we choice and create finally action like return object
+   It's for create actions (create this object {type:''}// This object for explanation)
+   code for creator example : 
+    // Creator actions
+    -> function createIncrementAction (number){
+        // Return type
+        return {
+            type : INCREMENT
+            number
+        }
+    }
+   code for action // Action 
+   const action = createIncrementAction(2); // here we will increase with two every running this action
+   can pass another attribute to the action like number
+ 
+9- the store : we can create store by createStore that we required it upove
+   with two parameters the function reducers and the initialState that we created upove 
+   code for reducers function const reducers = (state, action) => {return state;}
+   code for creating store : 
+   -> // Store  with passing two parameters  reducers && initialState
+   const store = createStore(reducers, initialState);
+10 - using store.getState()
+     -> /// For testing to see the state
+     const newState = store.getState();
+     console.log(newState);
+   
+
+11 - dispatching functions : to pass the actions and every time we call dispatch we call the reducers function : 
+     example for dispatching the action manually : store.dispatch({type : INCREMENT,number : 3});
+     we can use action creator code : 
+     that occur by pass the action to the dipatch
+     -> const action = createIncrementAction(2);
+     -> store.dispatch(action);
+     if we run the node.js index.js in the cmd not chaning will be happening
+     because the reducers don't work yet or don't change the state so look down to the reducers
+
+12- The reducers function  : take the old state and the action which we made a dispatching for it
+    so every time we run the dispatch we call the reducers function to implement on it 
+    to add switch to change the state
+    -> // The reducers function and must pass two parameters that what redux said state, action
+       const reducers = (state, action) => {
+        switch (action.type){
+            case(INCREMENT) : {
+                return {
+                    count: state.count + action.number
+                }
+             }
+          }
+           return state;
+        }
+
+13 - initialState : the initial value that we use when create the store
+     example : 
+     -> const initialState = {count : 0}

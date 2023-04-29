@@ -1,0 +1,65 @@
+import React, { Component } from "react";
+
+///<!--Don't use double or single qutation o "" on onClick=-->
+
+class ComponentsControling extends Component {
+    
+   
+    state = { 
+        value: 'default',
+        selectValue: "1",
+        checkedValue: true,
+        radioValue: "2"
+    };
+   
+    setValue = (event) => {
+        this.setState({
+            value: event.target.value
+        });
+    }
+    setSelectValue = (event) => {
+        this.setState({
+            selectValue: event.target.value
+        });
+    }
+    setCheckbox = (event) => {
+        this.setState({
+            checkedValue: event.target.checked
+           
+        }); 
+    }
+    changeRadio = (event) => {
+        this.setState({
+            radioValue: event.target.value
+        }); 
+    }
+    render (){///Render JSX html code
+        return <div>
+        <h1>Forms - Controll Components : -  </h1> 
+        <input value={this.state.value} type="text" onChange={this.setValue} />
+        <h2>TextArea</h2>
+        <textarea value={this.state.value} onChange={this.setValue} />
+        <h2>select</h2>
+        <select  value={this.state.selectValue}  onChange={this.setSelectValue} >
+            <option value={1}>One</option>
+            <option value={2}>Two</option>
+            <option value="3">three</option>
+            <option value={21}>twenty one</option>
+            
+        </select>
+        <hr /> 
+        <h2>changing the checkbox</h2>
+        <input type="checkbox" checked={this.state.checkedValue} onChange={this.setCheckbox} />
+        
+        <hr /> 
+        <h2>changing the checkbox</h2>
+        <div onChange={this.changeRadio}>
+            <input type="radio" value="1" checked={this.state.radioValue == '1'}  />One
+            <input type="radio" value="2" checked={this.state.radioValue == '2'} />Two
+            <input type="radio" value="3" checked={this.state.radioValue == '3'} />Three
+        </div>
+        </div>;
+    }
+}
+
+export default ComponentsControling;

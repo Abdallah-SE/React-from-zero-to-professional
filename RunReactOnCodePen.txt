@@ -1,0 +1,70 @@
+﻿                      This solution For simple experiment
+We can use codepen by this steps :- 
+
+1- Go To codepen make login
+2- create new pen
+3- Go to js settings icon and click on it
+4- write react keyword in the first input text(search field) you will get react suggestion so click on it
+then write react-dom then click on it also
+(note that will automatically add cdn links)
+5- we will select the js preprocessor (Babel) will compile the code
+6- finally click on save and close
+
+
+---------------------------------------------( 1 )First Example To write simple JSX that i wrote in codepen-----
+on HTML Section :
+<div id="root"></div>
+
+<div id="root2"></div>
+
+on JAVASCRIPT Section :
+
+///Using React JSX Element
+let app = <div>Hello World JSX</div>
+
+ReactDOM.render(app,document.getElementById("root"));
+
+///The Second way using createElement
+////it's complex than JSX
+
+let app2 = React.createElement('div', {},
+                       "Hello World createElement 2");
+ReactDOM.render(app2, document.getElementById("root2"));
+
+*******************************************************************************************************************
+
+--------------------------------------------------------( 2 Second Example i wrote in Codepen oeprations && + or . && function with {} && pass parameter to div )------------------
+on HTML Section :
+
+<div id="root"></div>
+
+
+on JAVASCRIPT Section :
+////constant 
+const re ="React";
+
+///using function 
+const upperStr  = 
+      function(user) {
+       return  user.toUpperCase();
+      }
+///Using React JSX Element
+let app = 
+    <div>
+      Hello World JSX {re + ':' } {1+3} 
+      <br /> 
+      { upperStr(re) }
+      
+      <div id={"id1" + "32"} className={"class1"}>ddd</div>
+    </div>
+
+ReactDOM.render(app,document.getElementById("root"));
+
+
+
+
+
+
+
+*******************************************************************************************************************
+

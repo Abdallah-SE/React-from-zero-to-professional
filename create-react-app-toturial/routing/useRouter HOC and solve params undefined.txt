@@ -1,0 +1,31 @@
+﻿HOC is higher order component
+
+Example in      {props.match.params.id}
+
+in ViewUser Component
+لا يمكننا استخدام 
+هذه الخاصيه في ال
+class
+
+و في
+
+المكونات الفرعيه
+can't use props.match in the components which are working as a branches
+
+solution : but will not working in react-router-dom v6
+
+like that
+
+import react from 'react';
+import {withRouter} from "react-router-dom";
+const ViewUser =  function (props) {
+    return <div>
+     {props.match.params.id}
+        <h2>Selected User info</h2>
+        <div>Name: {props.user.name}</div>
+        <div>Email: {props.user.email}</div>
+    </div>
+}
+
+
+export default withRouter(ViewUser);

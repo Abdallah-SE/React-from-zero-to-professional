@@ -1,0 +1,141 @@
+﻿ما هو ال
+Redux
+
+هو عباره عن 
+package
+
+يمكن استخدامه مع تطبيقات ال
+JavaScript
+
+مثل 
+React, Angular
+
+الهدف الر~يسي منها هو بناء او ايجاد مكان لوضع الداتا والمعلومات داخله ليتم استخدامها في كامل التطبيق الخاص بنا
+
+استخدام الداتا وتبادله بين ال
+Components
+يستخدم في التطبيقات الصغيره
+
+لكن وضع الداتا في مكان خاص للوصول اليها من كل مكان 
+او من كل 
+Components
+
+يجعل الموضوع 
+props  from components to another
+will pass it that may occuring through 10 states or 10 
+عبر مراحل كثيره
+مثلا
+from parent to child
+
+to solve that  by using Redux
+we will store data in the store 
+then store the state that we share in the app 
+some data still in the component
+but we store what we need in the store
+store refers to the location of storing data
+
+The store has Reducers that we will define and these Reducers change the data in the store dependent on what's happen in
+our app for example  user make event that is called in Redux action so we will call action to go to store
+and dependent on this action we decide the suitable Reducers and store will send the action and the data
+then the Reducer will change the state (new state) and return the new  state to the store
+
+then this will printed in theh View
+
+we will rebuild and complete the todo app that we are created in video number 18 in bashir youtube channel
+and convert it to Redux implementation
+
+ 
+There is a Redux DevTools
+
+that's is a tool to debuging during the implementation
+
+so install Redux DevTools it's important
+
+some  useful information when develop the counter app
+
+- to install redux npm install redux react-redux redux-thunk in react project
+  note that redux is the main package , react-redux is brigde between react and redux because we can use redux independently without react with other js package
+
+- to prepare the site to store data in it when using redux
+  ~ create store.js file
+  ~ add in the file this code <import {createStore} from "redux">
+  ~ create the store by write this code dependent on the upove line of code  so write this code :
+    <export default createStore(reducers, initialState)> by pass two parameters reducers and 
+    the initial state that belong to us in this app
+    the initialState will be defined upove the export code like this code
+    initialState = {
+        count : 0
+    }
+    then above the intialState we will define function as 
+    reducers that will take the current state and the action
+    reducers = (state, action) => {
+        switch (action.type){
+            case 'INCREMENT' :
+                return {
+                    count: state.count + 1
+                }   
+                case 'DECREMENT' :
+                return {
+                    count: state.count - 1
+                }
+            return state;    
+        }
+    };
+    
+    ~ to connect the store  (redux) with react we will write this lines of code inside the App.js file
+    ~ import {Provider} from "react-redux";
+    ~ import store from "./store/store.js";
+    ~ add parent to the App like this 
+      function App() {
+         return (
+             <Provider store={store}>
+                 <div className="App">
+                    <Counter />
+                 </div> 
+             </Provider>
+    
+         );
+       }
+
+    ~ we will need to connect the Counter.js Component to the store
+      so we will delete this code : 
+        state = {
+            count :0,
+            
+        }
+        increment = ()=> {
+            this.setState({
+                count: this.state.count + 1
+            });
+        }
+        decrement = () =>{
+            this.setState({
+                count: this.state.count - 1
+            });
+        }
+    ~ the code upove must be deleted then add this code inside the Counter Component: 
+      import { connect } from "react-redux";
+      then will take the export default and add connect (mapStateToProps)(Counter); like this
+      export default connect (mapStateToProps)(Counter);
+    ~ we must edit the countee Component to access count to access it write
+      {this.props.count}
+    ~ to test the state of count i will change the count in the initialState 
+      to 1 and see what's happen to the count on the browser
+    ~ now we send the state to the view from the store
+      to send the action to the store from the counter to make the action to change the state
+      we will add function like this and padd it to connect while export it in Counter Component
+      const mapDispatchtoProps = (dispatch) => {
+          return {
+              increment: () => dispatch({ type: 'INCREMENT'}),
+              decrement: () => dispatch({ type: 'DECREMENT'})
+          } 
+      }
+    ~ finally in Counter Component to access the action
+      onClick={this.props.increment} 
+      onClick={this.props.decrement}
+
+
+------------------------------------------------
+شرح لمصطلحات Redux
+
+ 

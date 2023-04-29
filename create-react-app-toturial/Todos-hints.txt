@@ -1,0 +1,5 @@
+﻿1- when looping should use key
+2- you must use state to change the list in this todolist []
+3- we can use function in app.js and use this function component inside the class in app.js
+in this case the key is linked with the component
+4- ths last function i create i can add it inside component folder in .js files

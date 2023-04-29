@@ -1,0 +1,38 @@
+﻿1- Stop the user from go to some pages
+منع المستخدم من تصفح بعض الصفحات
+
+علي سبيل المثال اذا كان المستخدم يقوم بملء فورم خاصه بمنتج معين
+وبعد ذالك اراد ان ينتقل الي صفحه اخري بدون اتمام العمليه
+نعرض له رساله تحذيريه عن  فقد مثلا ما كتبه اذا اردا الذهاب فعلا او انه يريد البقاء لربما ضغط بالخطأ
+
+to use this feature will import Prompt component from 'react-router-dom'
+here in this project will create this component in file named
+CreateUserPage
+
+import {Prompt} from "react-router-dom";
+
+او شيء
+نضيف المكون في الصفحه داخل الدف
+فوق ال
+EditUserForm component
+
+like this
+ <Prompt when={true} message={"Are you sur!"} />
+
+also import Prompt in userForm
+بامكاننا االاستفاده من 
+props
+
+<Prompt when={props.dirty} message={"Are you sur!"} />
+مثلا اذا اردنا منع المستخدم من التعديل  علي بيانات
+او التحقق بنفسك
+مثلا 
+onChange={event => {
+            setIsBlocking(event.target.value.length > 0);
+          }}
+
+والله المستعان
+
+but in react-router-dom 6 this will not working that removed
+so if you worked on react-router-dom 5 implement it
+

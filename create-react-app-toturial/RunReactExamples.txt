@@ -1,0 +1,461 @@
+﻿
+--------------------------------------------------------( 3 third Example props and children)------------------
+on Test.js Component :
+
+function Test(props){
+    return  <div>
+            Welcome I AM {props.name  + " " + props.lname} From Test Fun.
+            <p> {props.children} </p>
+        </div>;
+}
+
+
+export default Test;
+
+on app.js file :
+
+import './App.css';
+
+
+import Test from './components/Test';
+import Hello from './components/Hello';
+
+function App() {
+  return (
+    <div className="App">
+      Welcome
+      <Test name='Abdallah' lname="Mahmoud">Brief Description Here.</Test>
+      <Hello name="Abdallah from Class"  />
+    </div>
+  );
+}
+
+export default App;
+
+*******************************************************************************************************************
+
+
+--------------------------------------------------------( 4 fourth Example state)------------------
+on Hello.js component :
+import React, { Component } from "react";
+
+
+class Hello extends Component {
+    /*
+     * State vs props
+     * state is for component
+     * state can edit it with event or input something
+     * state can have [] or object
+     * state can't use with function (hooks solve that)
+     * */
+    state = { 
+        age: 21,
+        user : {
+            name: 'Abdallah',
+            lname: 'Mahmoud',
+        },
+        links : [
+            'fb',
+            'tw',
+        ]
+    };
+    render (){///Render JSX html code
+        return <div>Hello Componet By-Class, {this.props.name}
+        <p>{this.state.age} And My Name is {this.state.user.name}</p>
+        </div>;
+    }
+}
+
+export default Hello;
+
+on app.js file Section :
+
+just use the import and use the component
+
+*******************************************************************************************************************
+
+
+--------------------------------------------------------( 5 fifth Example i wrote in Codepen)------------------
+on HTML Section :
+
+
+on app.js file Section :
+
+just use the import and use the component
+
+*******************************************************************************************************************
+
+
+ 
+
+--------------------------------------------------------( 6 - Example onChange event)------------------
+on Hello component:
+
+import React, { Component } from "react";
+
+///<!--Don't use double or single qutation o "" on onClick=-->
+
+class Hello extends Component {
+    
+    constructor (props) {
+        super(props);
+        
+        this.increaseByTwo = this.increaseByTwo.bind(this);
+    }
+    /*
+     * State vs props
+     * state is for component
+     * state can edit it with event or input something
+     * state can have [] or object
+     * state can't use with function (hooks solve that)
+     * */
+    state = { 
+        age: 21,
+        user : {
+            name: 'Abdallah',
+            lname: 'Mahmoud'
+        },
+        links : [
+            'fb',
+            'tw'
+        ]
+    };
+    decrease = () => {
+            this.setState({age: this.state.age - 1});
+        }
+    decreaseByTwo() {
+            this.setState({age: this.state.age - 2});
+        }
+    increaseByTwo() {
+            this.setState({age: this.state.age + 2});
+        }
+        
+    updateName(event) {
+        const newName = event.target.value;
+        this.setState({
+            user: {
+                /*if you have a lot of parameters use ... spread operator*/
+                ...this.state.user,
+                name: newName
+            }
+        });
+        console.log(this.state.user);
+    }
+    render (){///Render JSX html code
+        return <div>Hello Componet By-Class, {this.props.name}
+        <p>{this.state.age} And My Name is {this.state.user.name} {this.state.user.lname} </p>
+        
+        <button onClick={ () => {this.setState({age: this.state.age + 1})} }>Increase</button>
+        <button onClick={this.decrease}>Decrease</button>
+        <button onClick={this.decreaseByTwo.bind(this)}>Decrease By Two</button>
+        <button onClick={this.increaseByTwo}>increase By Two</button>
+        <br />
+        <input value={this.state.user.name} type="text" onChange={this.updateName.bind(this)} />
+        </div>;
+    }
+}
+
+export default Hello;
+
+
+on app.js file Section :
+
+just use the import and use the component
+
+*******************************************************************************************************************
+
+
+--------------------------------------------------------( 7 Example lists and loops)------------------
+Lists.js component: 
+
+import React, { Component } from "react";
+
+function Lists(props){
+    const fruits = ['apple', 'orange', 'banana'];
+    
+    return  <div>
+                <ul>
+                    {fruits.map(item=><li key={item}>{item}</li>)}
+                </ul>
+            </div>;
+}
+
+
+export default Lists;
+
+
+
+
+on App.js file:
+import './App.css';
+
+
+import Test from './components/Test';
+import Hello from './components/Hello';
+
+import Lists from './components/Lists';
+
+function App() {
+  return (
+    <div className="App">
+      Welcome
+      <Test name='Abdallah' lname="Mahmoud">Brief Description Here.</Test>
+      <Hello name="Abdallah from Class"  />
+      <Lists  />
+    </div>
+  );
+}
+
+export default App;
+
+
+
+*******************************************************************************************************************
+
+
+
+--------------------------------------------------------( 8 example conditions )------------------
+on Conditions component :
+import React, { Component } from "react";
+
+function Conditions(props){
+    const age = 75;
+    
+    return  <div>
+    {age > 12 ? <div>You are older than 12 </div> : <div>You are smaller than 12 </div>}
+    {age > 50 ? <div>You are older than 50 </div> : null}
+            </div>;
+}
+
+
+export default Conditions;
+
+
+
+
+on app.js file :
+import and use Conditions component
+
+*******************************************************************************************************************
+
+
+
+--------------------------------------------------------( 9 liveCycle hooks)------------------
+used to run orders in cases or live period of the components on create or delete or update
+them example (create component we want to use request ajax)
+
+
+on LifeCycleComponent:
+import React, { Component } from "react";
+
+///<!--Don't use double or single qutation o "" on onClick=-->
+
+class LifeCycleExample extends Component {
+    
+    constructor (props) {
+        super(props);
+        
+        this.state = {
+            time: new Date
+        }
+    }
+    
+    componentDidMount(){
+        setInterval( ()=>{
+            this.setState({time: new Date});
+        }, 1000);
+    }
+    
+    render (){///Render JSX html code
+        return <div> 
+            The time is : {this.state.time.toLocaleTimeString()}
+        </div>;
+    }
+}
+
+export default LifeCycleExample;
+
+
+
+on app.js Section :
+just import it
+
+*******************************************************************************************************************
+
+
+
+
+
+--------------------------------------------------------( 10 Example Important notes)------------------
+you should install react developer tools
+
+you can't render more than element in components
+for example in Hello component return <div>(here is the elemnts of html)</div> and all html element must be insdie this div 
+one root element just
+
+you can use <Hello /> more than one time <Hello /><Hello /> that's true
+
+you can use simple ways for function in onClick or onChange you will learn it later
+
+*******************************************************************************************************************
+
+
+
+
+
+--------------------------------------------------------( 11 Example make the condition simple)------------------
+example in app.js
+
+function App() {
+    
+    const age = 25;
+    let templateAge = '';
+    if(age > 12){
+        templateAge = <h1>Your age is older than 12</h1>;
+    }else {
+        templateAge = "Your age is smaller than 12";
+    }
+  return (
+    <div className="App">
+      Welcome
+      <Test name='Abdallah' lname="Mahmoud">Brief Description Here.</Test>
+      <Test name='Ahmed' lname="Mohamed">Brief Description Here.</Test>
+      <Hello name="Abdallah from Class"  />
+      <Lists  />
+      <Conditions  />
+      <LifeCycleExample  />
+      {templateAge}
+    </div>
+  );
+}
+
+export default App;
+
+
+*******************************************************************************************************************
+
+
+
+
+--------------------------------------------------------( 12 Example Conditions & Loop - print array of objects )------------------
+in app.js for testing
+
+
+import './App.css';
+
+
+import Test from './components/Test';
+import Hello from './components/Hello';
+
+import Lists from './components/Lists';
+
+import LifeCycleExample from './components/LifeCycleExample';
+
+
+import Conditions from './components/Conditions';
+
+function App() {
+    
+    const age = 25;
+    let templateAge = '';
+    if(age > 12){
+        templateAge = <h1>Your age is older than 12</h1>;
+    }else {
+        templateAge = "Your age is smaller than 12";
+    }
+    
+    let users = [
+        {id: 9, name: "Abdallah", age: 23},
+        {id: 1, name: "Mahmoud", age: 30},
+        {id: 2, name: "Hassan", age: 12}
+    ];
+  return (
+    <div className="App">
+      Welcome
+      <Test name='Abdallah' lname="Mahmoud">Brief Description Here.</Test>
+      <Test name='Ahmed' lname="Mohamed">Brief Description Here.</Test>
+      <Hello name="Abdallah from Class"  />
+      <Lists  />
+      <Conditions  />
+      <LifeCycleExample  />
+      {templateAge}
+      <hr />
+        <ul>
+           {users.map( (item, i)=> <li key={item.id}>{i} - {item.name}</li>)};
+        </ul>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+*******************************************************************************************************************
+
+
+
+--------------------------------------------------------( 13 Example  Conditions & Loop - Better performance with components)------------------
+note you must use upper letters with components while naming them ageComponent error but AgeComponent is correct
+
+in app.js create AgeComponent  function as component and use in in render or retrun you can re-use the component again and again
+also create list for users component and reuse it in the app
+
+in Age.js component : 
+
+in Users.js component : 
+
+in app.js
+
+
+*******************************************************************************************************************
+
+
+
+
+--------------------------------------------------------( 14 Example i wrote in Codepen)------------------
+on HTML Section :
+
+
+on JAVASCRIPT Section :
+
+*******************************************************************************************************************
+
+
+
+
+--------------------------------------------------------( 16 Example i wrote in Codepen)------------------
+on HTML Section :
+
+
+on JAVASCRIPT Section :
+
+*******************************************************************************************************************
+
+
+
+
+
+
+--------------------------------------------------------( 17 Example i wrote in Codepen)------------------
+on HTML Section :
+
+
+on JAVASCRIPT Section :
+
+*******************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
